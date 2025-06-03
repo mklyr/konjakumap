@@ -4,8 +4,8 @@
 // @category    Layer
 // @version     0.2.0
 // @namespace   https://github.com/IITC-CE/ingress-intel-total-conversion
-// @updateURL   https://github.com/mklyr/konjakumap/raw/refs/heads/main/kjmaplayer-all.user.js
-// @downloadURL https://github.com/mklyr/konjakumap/raw/refs/heads/main/kjmaplayer-all.user.js
+// @updateURL   https://github.com/mklyr/konjakumap/raw/refs/heads/main/kjmaplayer.user.js
+// @downloadURL https://github.com/mklyr/konjakumap/raw/refs/heads/main/kjmaplayer.user.js
 // @description IITCに今昔マップのレイヤーを表示させます
 // @match       https://intel.ingress.com/*
 // @match       https://intel-x.ingress.com/*
