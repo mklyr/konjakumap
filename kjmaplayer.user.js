@@ -802,7 +802,7 @@ function wrapper(plugin_info) {
         dialog({
             html: html,
             id: 'KjmapLayer-options-all',
-            title: '今昔マップ設定（全データセット対応）',
+            title: '今昔マップ設定',
             width: 'auto',
             focusCallback: function() {
                 // ダイアログ再フォーカス時にスライダーを過去値に戻す
