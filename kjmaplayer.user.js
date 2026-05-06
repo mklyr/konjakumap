@@ -2,7 +2,7 @@
 // @id          iitc-plugin-Konjakumap
 // @name        IITC plugin: Konjakumap
 // @category    Layer
-// @version     0.3.0
+// @version     0.3.1
 // @namespace   https://github.com/IITC-CE/ingress-intel-total-conversion
 // @updateURL   https://github.com/mklyr/konjakumap/raw/refs/heads/main/kjmaplayer.user.js
 // @downloadURL https://github.com/mklyr/konjakumap/raw/refs/heads/main/kjmaplayer.user.js
@@ -686,7 +686,8 @@ function wrapper(plugin_info) {
             maxNativeZoom: maxNative,
             maxZoom: 21,
             opacity: OptionData.opacity / 10,
-            tms: true
+            tms: true,
+            zIndex: 10
         };
 
         TileLayerKjmap = L.tileLayer(tileUrl, tileOpt);
@@ -827,4 +828,3 @@ if (typeof GM_info !== 'undefined' && GM_info && GM_info.script) {
 }
 script.appendChild(document.createTextNode('(' + wrapper + ')(' + JSON.stringify(info) + ');'));
 (document.body || document.head || document.documentElement).appendChild(script);
-
