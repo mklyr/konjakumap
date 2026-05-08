@@ -2,7 +2,7 @@
 // @id          iitc-plugin-Konjakumap
 // @name        IITC plugin: Konjakumap
 // @category    Layer
-// @version     0.3.1
+// @version     0.4.0
 // @namespace   https://github.com/IITC-CE/ingress-intel-total-conversion
 // @updateURL   https://github.com/mklyr/konjakumap/raw/refs/heads/main/kjmaplayer.user.js
 // @downloadURL https://github.com/mklyr/konjakumap/raw/refs/heads/main/kjmaplayer.user.js
@@ -27,50 +27,6 @@ function wrapper(plugin_info) {
     var TileLayerKjmap = null;
 
     window.plugin.KjmapLayer.datasets = {
-        tokyo50: {
-            label: '首都圏',
-            periods: [
-                { id: '2man', label: '1896-1909年 (2万分の1)' },
-                { id: '00', label: '1917-1924年' },
-                { id: '01', label: '1927-1939年' },
-                { id: '02', label: '1944-1954年' },
-                { id: '03', label: '1965-1968年' },
-                { id: '04', label: '1975-1978年' },
-                { id: '05', label: '1983-1987年' },
-                { id: '06', label: '1992-1995年' },
-                { id: '07', label: '1998-2005年' }
-            ]
-        },
-        chukyo: {
-            label: '中京圏',
-            periods: [
-                { id: '2man', label: '1888-1898年 (2万分の1)' },
-                { id: '00', label: '1920年' },
-                { id: '01', label: '1932年' },
-                { id: '02', label: '1937-1938年' },
-                { id: '03', label: '1947年' },
-                { id: '04', label: '1959-1960年' },
-                { id: '05', label: '1968-1973年' },
-                { id: '06', label: '1976-1980年' },
-                { id: '07', label: '1984-1989年' },
-                { id: '08', label: '1992-1996年' }
-            ]
-        },
-        keihansin: {
-            label: '京阪神圏',
-            periods: [
-                { id: '2man', label: '1892-1910年 (2万分の1)' },
-                { id: '00', label: '1922-1923年' },
-                { id: '01', label: '1927-1935年' },
-                { id: '02', label: '1947-1950年' },
-                { id: '03', label: '1954-1956年' },
-                { id: '03x', label: '1961-1964年 (3x)' },
-                { id: '04', label: '1967-1970年' },
-                { id: '05', label: '1975-1979年' },
-                { id: '06', label: '1983-1988年' },
-                { id: '07', label: '1993-1997年' }
-            ]
-        },
         sapporo: {
             label: '札幌',
             periods: [
@@ -79,343 +35,6 @@ function wrapper(plugin_info) {
                 { id: '02', label: '1950-1952年' },
                 { id: '03', label: '1975-1976年' },
                 { id: '04', label: '1995-1998年' }
-            ]
-        },
-        sendai: {
-            label: '仙台',
-            periods: [
-                { id: '00', label: '1928-1933年' },
-                { id: '01', label: '1946年' },
-                { id: '02', label: '1963-1967年' },
-                { id: '03', label: '1977-1978年' },
-                { id: '04', label: '1995-2000年' }
-            ]
-        },
-        hiroshima: {
-            label: '広島',
-            periods: [
-                { id: '2man', label: '1894-1899年 (2万分の1)' },
-                { id: '00', label: '1925-1932年' },
-                { id: '01', label: '1950-1954年' },
-                { id: '02', label: '1967-1969年' },
-                { id: '03', label: '1984-1990年' },
-                { id: '04', label: '1992-2001年' }
-            ]
-        },
-        fukuoka: {
-            label: '福岡・北九州',
-            periods: [
-                { id: '00', label: '1922-1926年' },
-                { id: '01', label: '1936-1938年' },
-                { id: '02', label: '1948-1956年' },
-                { id: '03', label: '1967-1972年' },
-                { id: '04', label: '1982-1986年' },
-                { id: '05', label: '1991-2000年' }
-            ]
-        },
-        tohoku_pacific_coast: {
-            label: '東北地方太平洋岸',
-            periods: [
-                { id: '00', label: '1901-1913年' },
-                { id: '01', label: '1949-1953年' },
-                { id: '02', label: '1969-1982年' },
-                { id: '03', label: '1990-2008年' }
-            ]
-        },
-        kanto: {
-            label: '関東',
-            periods: [
-                { id: '00', label: '1894-1915年' },
-                { id: '01', label: '1928-1945年' },
-                { id: '02', label: '1972-1982年' },
-                { id: '03', label: '1988-2008年' }
-            ]
-        },
-        okinawas: {
-            label: '沖縄本島南部',
-            periods: [
-                { id: '00', label: '1919年' },
-                { id: '01', label: '1973-1975年' },
-                { id: '02', label: '1992-1994年' },
-                { id: '03', label: '2005-2008年' }
-            ]
-        },
-        hamamatsu: {
-            label: '浜松・豊橋',
-            periods: [
-                { id: '2man', label: '1889-1890年 (2万分の1)' },
-                { id: '00', label: '1916-1918年' },
-                { id: '01', label: '1938-1950年' },
-                { id: '02', label: '1956-1959年' },
-                { id: '03', label: '1975-1988年' },
-                { id: '04', label: '1988-1995年' },
-                { id: '05', label: '1996-2010年' }
-            ]
-        },
-        kumamoto: {
-            label: '熊本',
-            periods: [
-                { id: '2man', label: '1900-1901年 (2万分の1)' },
-                { id: '00', label: '1926年' },
-                { id: '01', label: '1965-1971年' },
-                { id: '02', label: '1983年' },
-                { id: '03', label: '1998-2000年' }
-            ]
-        },
-        niigata: {
-            label: '新潟',
-            periods: [
-                { id: '00', label: '1910-1911年' },
-                { id: '01', label: '1930-1931年' },
-                { id: '02', label: '1966-1968年' },
-                { id: '03', label: '1980-1988年' },
-                { id: '04', label: '1997-2001年' }
-            ]
-        },
-        himeji: {
-            label: '姫路',
-            periods: [
-                { id: '2man', label: '1903-1910年 (2万分の1)' },
-                { id: '00', label: '1923年' },
-                { id: '01', label: '1967年' },
-                { id: '02', label: '1981-1985年' },
-                { id: '03', label: '1997-2001年' }
-            ]
-        },
-        okayama: {
-            label: '岡山・福山',
-            periods: [
-                { id: '2man', label: '1895-1898年 (2万分の1)' },
-                { id: '00', label: '1925年' },
-                { id: '01', label: '1965-1970年' },
-                { id: '02', label: '1978-1988年' },
-                { id: '03', label: '1990-2000年' }
-            ]
-        },
-        kagoshima: {
-            label: '鹿児島',
-            periods: [
-                { id: '5man', label: '1902年 (5万分の1)' },
-                { id: '2man', label: '1902年 (2万分の1)' },
-                { id: '00', label: '1932年' },
-                { id: '01', label: '1966年' },
-                { id: '02', label: '1982-1983年' },
-                { id: '03', label: '1996-2001年' }
-            ]
-        },
-        matsuyama: {
-            label: '松山',
-            periods: [
-                { id: '2man', label: '1903年 (2万分の1)' },
-                { id: '00', label: '1928-1955年' },
-                { id: '01', label: '1968年' },
-                { id: '02', label: '1985年' },
-                { id: '03', label: '1998-1999年' }
-            ]
-        },
-        oita: {
-            label: '大分',
-            periods: [
-                { id: '00', label: '1914年' },
-                { id: '01', label: '1973年' },
-                { id: '02', label: '1984-1986年' },
-                { id: '03', label: '1997-2001年' }
-            ]
-        },
-        nagasaki: {
-            label: '長崎',
-            periods: [
-                { id: '2man', label: '1900-1901年 (2万分の1)' },
-                { id: '00', label: '1924-1926年' },
-                { id: '01', label: '1954年' },
-                { id: '02', label: '1970年' },
-                { id: '03', label: '1982-1983年' },
-                { id: '03', label: '1996-2000年' }
-            ]
-        },
-        kanazawa: {
-            label: '金沢・富山',
-            periods: [
-                { id: '2man', label: '1909-1910年 (2万分の1)' },
-                { id: '00', label: '1930年' },
-                { id: '01', label: '1968-1969年' },
-                { id: '02', label: '1981-1985年' },
-                { id: '03', label: '1994-2001年' }
-            ]
-        },
-        wakayama: {
-            label: '和歌山',
-            periods: [
-                { id: '2man', label: '1908-1912年 (2万分の1)' },
-                { id: '00', label: '1934年' },
-                { id: '01', label: '1947年' },
-                { id: '02', label: '1966-1967年' },
-                { id: '03', label: '1984-1985年' },
-                { id: '04', label: '1998-2000年' }
-            ]
-        },
-        aomori: {
-            label: '青森',
-            periods: [
-                { id: '00', label: '1912年' },
-                { id: '01', label: '1939-1955年' },
-                { id: '02', label: '1970年' },
-                { id: '03', label: '1984-1989年' },
-                { id: '04', label: '2003-2011年' }
-            ]
-        },
-        takamatsu: {
-            label: '高松',
-            periods: [
-                { id: '2man', label: '1896-1910年 (2万分の1)' },
-                { id: '00', label: '1928年' },
-                { id: '01', label: '1969年' },
-                { id: '02', label: '1983-1984年' },
-                { id: '03', label: '1990-2000年' }
-            ]
-        },
-        nagano: {
-            label: '長野',
-            periods: [
-                { id: '00', label: '1912年' },
-                { id: '01', label: '1937年' },
-                { id: '02', label: '1960年' },
-                { id: '03', label: '1972-1973年' },
-                { id: '04', label: '1985年' },
-                { id: '05', label: '2001年' }
-            ]
-        },
-        fukushima: {
-            label: '福島',
-            periods: [
-                { id: '00', label: '1908年' },
-                { id: '01', label: '1931年' },
-                { id: '02', label: '1972-1973年' },
-                { id: '03', label: '1983年' },
-                { id: '04', label: '1996-2000年' }
-            ]
-        },
-        fukui: {
-            label: '福井',
-            periods: [
-                { id: '2man', label: '1909年 (2万分の1)' },
-                { id: '00', label: '1930年' },
-                { id: '01', label: '1969-1973年' },
-                { id: '02', label: '1988-1990年' },
-                { id: '03', label: '1996-2000年' }
-            ]
-        },
-        akita: {
-            label: '秋田',
-            periods: [
-                { id: '00', label: '1912年' },
-                { id: '01', label: '1971-1972年' },
-                { id: '02', label: '1985-1990年' },
-                { id: '03', label: '2006-2007年' }
-            ]
-        },
-        morioka: {
-            label: '盛岡',
-            periods: [
-                { id: '00', label: '1811-1912年' },
-                { id: '01', label: '1939年' },
-                { id: '02', label: '1968-1969年' },
-                { id: '03', label: '1983-1988年' },
-                { id: '04', label: '1999-2002年' }
-            ]
-        },
-        tottori: {
-            label: '鳥取',
-            periods: [
-                { id: '2man', label: '1897年 (2万分の1)' },
-                { id: '00', label: '1932年' },
-                { id: '01', label: '1973年' },
-                { id: '02', label: '1988年' },
-                { id: '03', label: '1999-2001年' }
-            ]
-        },
-        tokushima: {
-            label: '徳島',
-            periods: [
-                { id: '2man', label: '1896-1909年 (2万分の1)' },
-                { id: '00', label: '1917年' },
-                { id: '01', label: '1928-1934年' },
-                { id: '02', label: '1969-1970年' },
-                { id: '03', label: '1981-1987年' },
-                { id: '04', label: '1997-2000年' }
-            ]
-        },
-        kochi: {
-            label: '高知',
-            periods: [
-                { id: '2man', label: '1906-1907年 (2万分の1)' },
-                { id: '00', label: '1933年' },
-                { id: '01', label: '1965年' },
-                { id: '02', label: '1982年' },
-                { id: '03', label: '1998-2003年' }
-            ]
-        },
-        miyazaki: {
-            label: '宮崎',
-            periods: [
-                { id: '00', label: '1902年' },
-                { id: '01', label: '1935年' },
-                { id: '02', label: '1962年' },
-                { id: '03', label: '1979年' },
-                { id: '04', label: '1999-2001年' }
-            ]
-        },
-        yamagata: {
-            label: '山形',
-            periods: [
-                { id: '2man', label: '1901-1903年 (2万分の1)' },
-                { id: '00', label: '1931年' },
-                { id: '01', label: '1970年' },
-                { id: '02', label: '1980-1989年' },
-                { id: '03', label: '1999-2001年' }
-            ]
-        },
-        saga: {
-            label: '佐賀・久留米',
-            periods: [
-                { id: '2man', label: '1900-1911年 (2万分の1)' },
-                { id: '00', label: '1914-1926年' },
-                { id: '01', label: '1931-1940年' },
-                { id: '02', label: '1958-1964年' },
-                { id: '03', label: '1977-1982年' },
-                { id: '04', label: '1998-2001年' }
-            ]
-        },
-        matsue: {
-            label: '松江・米子',
-            periods: [
-                { id: '00', label: '1915年' },
-                { id: '01', label: '1934年' },
-                { id: '02', label: '1975年' },
-                { id: '03', label: '1989-1990年' },
-                { id: '04', label: '1997-2003年' }
-            ]
-        },
-        tsu: {
-            label: '津',
-            periods: [
-                { id: '2man', label: '1892-1898年 (2万分の1)' },
-                { id: '00', label: '1920年' },
-                { id: '01', label: '1937年' },
-                { id: '02', label: '1959年' },
-                { id: '03', label: '1980-1982年' },
-                { id: '04', label: '1991-1999年' }
-            ]
-        },
-        yamaguchi: {
-            label: '山口',
-            periods: [
-                { id: '2man', label: '1897-1909年 (2万分の1)' },
-                { id: '00', label: '1922-1927年' },
-                { id: '01', label: '1936-1951年' },
-                { id: '02', label: '1969年' },
-                { id: '03', label: '1983-1989年' },
-                { id: '04', label: '2000-2001年' }
             ]
         },
         asahikawa: {
@@ -436,46 +55,6 @@ function wrapper(plugin_info) {
                 { id: '02', label: '1968年' },
                 { id: '03', label: '1986-1989年' },
                 { id: '04', label: '1996-2001年' }
-            ]
-        },
-        matsumoto: {
-            label: '松本',
-            periods: [
-                { id: '00', label: '1910年' },
-                { id: '01', label: '1931年' },
-                { id: '02', label: '1974-1975年' },
-                { id: '03', label: '1987-1992年' },
-                { id: '04', label: '1996-2001年' }
-            ]
-        },
-        sasebo: {
-            label: '佐世保',
-            periods: [
-                { id: '2man', label: '1900-1901年 (2万分の1)' },
-                { id: '00', label: '1924年' },
-                { id: '01', label: '1971年' },
-                { id: '02', label: '1985-1987年' },
-                { id: '03', label: '1997-1998年' }
-            ]
-        },
-        hirosaki: {
-            label: '弘前',
-            periods: [
-                { id: '00', label: '1912年' },
-                { id: '01', label: '1939年' },
-                { id: '02', label: '1970-1971年' },
-                { id: '03', label: '1980-1986年' },
-                { id: '04', label: '1994-1997年' }
-            ]
-        },
-        aizu: {
-            label: '会津',
-            periods: [
-                { id: '00', label: '1908-1910年' },
-                { id: '01', label: '1931年' },
-                { id: '02', label: '1972-1975年' },
-                { id: '03', label: '1988-1991年' },
-                { id: '04', label: '1997-2000年' }
             ]
         },
         kushiro: {
@@ -508,24 +87,92 @@ function wrapper(plugin_info) {
                 { id: '04', label: '1998-2000年' }
             ]
         },
-        miyakonojyou: {
-            label: '都城',
+        muroran: {
+            label: '室蘭',
             periods: [
-                { id: '00', label: '1902年' },
-                { id: '01', label: '1932年' },
-                { id: '02', label: '1966年' },
-                { id: '03', label: '1979-1980年' },
-                { id: '04', label: '1998-2001年' }
+                { id: '00', label: '1896年' },
+                { id: '01', label: '1917年' },
+                { id: '02', label: '1955年' },
+                { id: '03', label: '1986-1987年' },
+                { id: '04', label: '1998-2000年' }
             ]
         },
-        toyo: {
-            label: '東予',
+        aomori: {
+            label: '青森',
             periods: [
-                { id: '00', label: '1898-1906年' },
-                { id: '01', label: '1928年' },
-                { id: '02', label: '1966-1969年' },
+                { id: '00', label: '1912年' },
+                { id: '01', label: '1939-1955年' },
+                { id: '02', label: '1970年' },
                 { id: '03', label: '1984-1989年' },
-                { id: '04', label: '1994-2001年' }
+                { id: '04', label: '2003-2011年' }
+            ]
+        },
+        hirosaki: {
+            label: '弘前',
+            periods: [
+                { id: '00', label: '1912年' },
+                { id: '01', label: '1939年' },
+                { id: '02', label: '1970-1971年' },
+                { id: '03', label: '1980-1986年' },
+                { id: '04', label: '1994-1997年' }
+            ]
+        },
+        morioka: {
+            label: '盛岡',
+            periods: [
+                { id: '00', label: '1811-1912年' },
+                { id: '01', label: '1939年' },
+                { id: '02', label: '1968-1969年' },
+                { id: '03', label: '1983-1988年' },
+                { id: '04', label: '1999-2002年' }
+            ]
+        },
+        iwatekennan: {
+            label: '岩手県南',
+            periods: [
+                { id: '00', label: '1913年' },
+                { id: '01', label: '1951年' },
+                { id: '02', label: '1968年' },
+                { id: '03', label: '1985-1986年' },
+                { id: '04', label: '1996-2001年' }
+            ]
+        },
+        tohoku_pacific_coast: {
+            label: '東北地方太平洋岸',
+            periods: [
+                { id: '00', label: '1901-1913年' },
+                { id: '01', label: '1949-1953年' },
+                { id: '02', label: '1969-1982年' },
+                { id: '03', label: '1990-2008年' }
+            ]
+        },
+        sendai: {
+            label: '仙台',
+            periods: [
+                { id: '00', label: '1928-1933年' },
+                { id: '01', label: '1946年' },
+                { id: '02', label: '1963-1967年' },
+                { id: '03', label: '1977-1978年' },
+                { id: '04', label: '1995-2000年' }
+            ]
+        },
+        akita: {
+            label: '秋田',
+            periods: [
+                { id: '00', label: '1912年' },
+                { id: '01', label: '1971-1972年' },
+                { id: '02', label: '1985-1990年' },
+                { id: '03', label: '2006-2007年' }
+            ]
+        },
+        yamagata: {
+            label: '山形',
+            periods: [
+                { id: '2man', label: '1901-1903年 (2万分の1)' },
+                { id: '00', label: '1931年' },
+                { id: '01', label: '1970年' },
+                { id: '02', label: '1980-1989年' },
+                { id: '03', label: '1999-2001年' }
             ]
         },
         syonai: {
@@ -538,14 +185,166 @@ function wrapper(plugin_info) {
                 { id: '04', label: '1997-2001年' }
             ]
         },
-        muroran: {
-            label: '室蘭',
+        yonezawa: {
+            label: '米沢',
             periods: [
-                { id: '00', label: '1896年' },
-                { id: '01', label: '1917年' },
-                { id: '02', label: '1955年' },
-                { id: '03', label: '1986-1987年' },
-                { id: '04', label: '1998-2000年' }
+                { id: '00', label: '1908-1910年' },
+                { id: '01', label: '1952-1953年' },
+                { id: '02', label: '1970-1973年' },
+                { id: '03', label: '1984年' },
+                { id: '04', label: '1999-2001年' }
+            ]
+        },
+        fukushima: {
+            label: '福島',
+            periods: [
+                { id: '00', label: '1908年' },
+                { id: '01', label: '1931年' },
+                { id: '02', label: '1972-1973年' },
+                { id: '03', label: '1983年' },
+                { id: '04', label: '1996-2000年' }
+            ]
+        },
+        aizu: {
+            label: '会津',
+            periods: [
+                { id: '00', label: '1908-1910年' },
+                { id: '01', label: '1931年' },
+                { id: '02', label: '1972-1975年' },
+                { id: '03', label: '1988-1991年' },
+                { id: '04', label: '1997-2000年' }
+            ]
+        },
+        kanto: {
+            label: '関東',
+            periods: [
+                { id: '00', label: '1894-1915年' },
+                { id: '01', label: '1928-1945年' },
+                { id: '02', label: '1972-1982年' },
+                { id: '03', label: '1988-2008年' }
+            ]
+        },
+        tokyo50: {
+            label: '首都圏',
+            periods: [
+                { id: '2man', label: '1896-1909年 (2万分の1)' },
+                { id: '00', label: '1917-1924年' },
+                { id: '01', label: '1927-1939年' },
+                { id: '02', label: '1944-1954年' },
+                { id: '03', label: '1965-1968年' },
+                { id: '04', label: '1975-1978年' },
+                { id: '05', label: '1983-1987年' },
+                { id: '06', label: '1992-1995年' },
+                { id: '07', label: '1998-2005年' }
+            ]
+        },
+        niigata: {
+            label: '新潟',
+            periods: [
+                { id: '00', label: '1910-1911年' },
+                { id: '01', label: '1930-1931年' },
+                { id: '02', label: '1966-1968年' },
+                { id: '03', label: '1980-1988年' },
+                { id: '04', label: '1997-2001年' }
+            ]
+        },
+        kanazawa: {
+            label: '金沢・富山',
+            periods: [
+                { id: '2man', label: '1909-1910年 (2万分の1)' },
+                { id: '00', label: '1930年' },
+                { id: '01', label: '1968-1969年' },
+                { id: '02', label: '1981-1985年' },
+                { id: '03', label: '1994-2001年' }
+            ]
+        },
+        fukui: {
+            label: '福井',
+            periods: [
+                { id: '2man', label: '1909年 (2万分の1)' },
+                { id: '00', label: '1930年' },
+                { id: '01', label: '1969-1973年' },
+                { id: '02', label: '1988-1990年' },
+                { id: '03', label: '1996-2000年' }
+            ]
+        },
+        nagano: {
+            label: '長野',
+            periods: [
+                { id: '00', label: '1912年' },
+                { id: '01', label: '1937年' },
+                { id: '02', label: '1960年' },
+                { id: '03', label: '1972-1973年' },
+                { id: '04', label: '1985年' },
+                { id: '05', label: '2001年' }
+            ]
+        },
+        matsumoto: {
+            label: '松本',
+            periods: [
+                { id: '00', label: '1910年' },
+                { id: '01', label: '1931年' },
+                { id: '02', label: '1974-1975年' },
+                { id: '03', label: '1987-1992年' },
+                { id: '04', label: '1996-2001年' }
+            ]
+        },
+        ina: {
+            label: '伊那',
+            periods: [
+                { id: '00', label: '1911年' },
+                { id: '01', label: '1951-1952年' },
+                { id: '02', label: '1976年' },
+                { id: '03', label: '1987-1990年' },
+                { id: '04', label: '1998-2001年' }
+            ]
+        },
+        hamamatsu: {
+            label: '浜松・豊橋',
+            periods: [
+                { id: '2man', label: '1889-1890年 (2万分の1)' },
+                { id: '00', label: '1916-1918年' },
+                { id: '01', label: '1938-1950年' },
+                { id: '02', label: '1956-1959年' },
+                { id: '03', label: '1975-1988年' },
+                { id: '04', label: '1988-1995年' },
+                { id: '05', label: '1996-2010年' }
+            ]
+        },
+        chukyo: {
+            label: '中京圏',
+            periods: [
+                { id: '2man', label: '1888-1898年 (2万分の1)' },
+                { id: '00', label: '1920年' },
+                { id: '01', label: '1932年' },
+                { id: '02', label: '1937-1938年' },
+                { id: '03', label: '1947年' },
+                { id: '04', label: '1959-1960年' },
+                { id: '05', label: '1968-1973年' },
+                { id: '06', label: '1976-1980年' },
+                { id: '07', label: '1984-1989年' },
+                { id: '08', label: '1992-1996年' }
+            ]
+        },
+        tsu: {
+            label: '津',
+            periods: [
+                { id: '2man', label: '1892-1898年 (2万分の1)' },
+                { id: '00', label: '1920年' },
+                { id: '01', label: '1937年' },
+                { id: '02', label: '1959年' },
+                { id: '03', label: '1980-1982年' },
+                { id: '04', label: '1991-1999年' }
+            ]
+        },
+        iga: {
+            label: '伊賀',
+            periods: [
+                { id: '00', label: '1892年' },
+                { id: '01', label: '1937年' },
+                { id: '02', label: '1968年' },
+                { id: '03', label: '1980-1986年' },
+                { id: '04', label: '1996-2001年' }
             ]
         },
         omi: {
@@ -559,34 +358,164 @@ function wrapper(plugin_info) {
                 { id: '04', label: '1992-1999年' }
             ]
         },
-        iwatekennan: {
-            label: '岩手県南',
+        keihansin: {
+            label: '京阪神圏',
             periods: [
-                { id: '00', label: '1913年' },
-                { id: '01', label: '1951年' },
-                { id: '02', label: '1968年' },
-                { id: '03', label: '1985-1986年' },
-                { id: '04', label: '1996-2001年' }
+                { id: '2man', label: '1892-1910年 (2万分の1)' },
+                { id: '00', label: '1922-1923年' },
+                { id: '01', label: '1927-1935年' },
+                { id: '02', label: '1947-1950年' },
+                { id: '03', label: '1954-1956年' },
+                { id: '03x', label: '1961-1964年 (3x)' },
+                { id: '04', label: '1967-1970年' },
+                { id: '05', label: '1975-1979年' },
+                { id: '06', label: '1983-1988年' },
+                { id: '07', label: '1993-1997年' }
             ]
         },
-        nobeoka: {
-            label: '延岡',
+        himeji: {
+            label: '姫路',
             periods: [
-                { id: '00', label: '1901年' },
-                { id: '01', label: '1932-1942年' },
-                { id: '02', label: '1965年' },
-                { id: '03', label: '1978-1978年' },
-                { id: '04', label: '1999-2000年' }
+                { id: '2man', label: '1903-1910年 (2万分の1)' },
+                { id: '00', label: '1923年' },
+                { id: '01', label: '1967年' },
+                { id: '02', label: '1981-1985年' },
+                { id: '03', label: '1997-2001年' }
             ]
         },
-        yatsushiro: {
-            label: '八代',
+        wakayama: {
+            label: '和歌山',
             periods: [
-                { id: '00', label: '1913年' },
-                { id: '01', label: '1951年' },
-                { id: '02', label: '1968年' },
-                { id: '03', label: '1983-1986年' },
+                { id: '2man', label: '1908-1912年 (2万分の1)' },
+                { id: '00', label: '1934年' },
+                { id: '01', label: '1947年' },
+                { id: '02', label: '1966-1967年' },
+                { id: '03', label: '1984-1985年' },
+                { id: '04', label: '1998-2000年' }
+            ]
+        },
+        okayama: {
+            label: '岡山・福山',
+            periods: [
+                { id: '2man', label: '1895-1898年 (2万分の1)' },
+                { id: '00', label: '1925年' },
+                { id: '01', label: '1965-1970年' },
+                { id: '02', label: '1978-1988年' },
+                { id: '03', label: '1990-2000年' }
+            ]
+        },
+        hiroshima: {
+            label: '広島',
+            periods: [
+                { id: '2man', label: '1894-1899年 (2万分の1)' },
+                { id: '00', label: '1925-1932年' },
+                { id: '01', label: '1950-1954年' },
+                { id: '02', label: '1967-1969年' },
+                { id: '03', label: '1984-1990年' },
+                { id: '04', label: '1992-2001年' }
+            ]
+        },
+        tottori: {
+            label: '鳥取',
+            periods: [
+                { id: '2man', label: '1897年 (2万分の1)' },
+                { id: '00', label: '1932年' },
+                { id: '01', label: '1973年' },
+                { id: '02', label: '1988年' },
+                { id: '03', label: '1999-2001年' }
+            ]
+        },
+        matsue: {
+            label: '松江・米子',
+            periods: [
+                { id: '00', label: '1915年' },
+                { id: '01', label: '1934年' },
+                { id: '02', label: '1975年' },
+                { id: '03', label: '1989-1990年' },
+                { id: '04', label: '1997-2003年' }
+            ]
+        },
+        yamaguchi: {
+            label: '山口',
+            periods: [
+                { id: '2man', label: '1897-1909年 (2万分の1)' },
+                { id: '00', label: '1922-1927年' },
+                { id: '01', label: '1936-1951年' },
+                { id: '02', label: '1969年' },
+                { id: '03', label: '1983-1989年' },
+                { id: '04', label: '2000-2001年' }
+            ]
+        },
+        shunan: {
+            label: '周南',
+            periods: [
+                { id: '00', label: '1899年' },
+                { id: '01', label: '1949年' },
+                { id: '02', label: '1968-1969年' },
+                { id: '03', label: '1985年' },
+                { id: '04', label: '1994-2001年' }
+            ]
+        },
+        matsuyama: {
+            label: '松山',
+            periods: [
+                { id: '2man', label: '1903年 (2万分の1)' },
+                { id: '00', label: '1928-1955年' },
+                { id: '01', label: '1968年' },
+                { id: '02', label: '1985年' },
+                { id: '03', label: '1998-1999年' }
+            ]
+        },
+        toyo: {
+            label: '東予',
+            periods: [
+                { id: '00', label: '1898-1906年' },
+                { id: '01', label: '1928年' },
+                { id: '02', label: '1966-1969年' },
+                { id: '03', label: '1984-1989年' },
+                { id: '04', label: '1994-2001年' }
+            ]
+        },
+        takamatsu: {
+            label: '高松',
+            periods: [
+                { id: '2man', label: '1896-1910年 (2万分の1)' },
+                { id: '00', label: '1928年' },
+                { id: '01', label: '1969年' },
+                { id: '02', label: '1983-1984年' },
+                { id: '03', label: '1990-2000年' }
+            ]
+        },
+        tokushima: {
+            label: '徳島',
+            periods: [
+                { id: '2man', label: '1896-1909年 (2万分の1)' },
+                { id: '00', label: '1917年' },
+                { id: '01', label: '1928-1934年' },
+                { id: '02', label: '1969-1970年' },
+                { id: '03', label: '1981-1987年' },
                 { id: '04', label: '1997-2000年' }
+            ]
+        },
+        kochi: {
+            label: '高知',
+            periods: [
+                { id: '2man', label: '1906-1907年 (2万分の1)' },
+                { id: '00', label: '1933年' },
+                { id: '01', label: '1965年' },
+                { id: '02', label: '1982年' },
+                { id: '03', label: '1998-2003年' }
+            ]
+        },
+        fukuoka: {
+            label: '福岡・北九州',
+            periods: [
+                { id: '00', label: '1922-1926年' },
+                { id: '01', label: '1936-1938年' },
+                { id: '02', label: '1948-1956年' },
+                { id: '03', label: '1967-1972年' },
+                { id: '04', label: '1982-1986年' },
+                { id: '05', label: '1991-2000年' }
             ]
         },
         omuta: {
@@ -600,44 +529,115 @@ function wrapper(plugin_info) {
                 { id: '05', label: '1999-2000年' }
             ]
         },
-        shunan: {
-            label: '周南',
+        saga: {
+            label: '佐賀・久留米',
             periods: [
-                { id: '00', label: '1899年' },
-                { id: '01', label: '1949年' },
-                { id: '02', label: '1968-1969年' },
-                { id: '03', label: '1985年' },
-                { id: '04', label: '1994-2001年' }
-            ]
-        },
-        yonezawa: {
-            label: '米沢',
-            periods: [
-                { id: '00', label: '1908-1910年' },
-                { id: '01', label: '1952-1953年' },
-                { id: '02', label: '1970-1973年' },
-                { id: '03', label: '1984年' },
-                { id: '04', label: '1999-2001年' }
-            ]
-        },
-        ina: {
-            label: '伊那',
-            periods: [
-                { id: '00', label: '1911年' },
-                { id: '01', label: '1951-1952年' },
-                { id: '02', label: '1976年' },
-                { id: '03', label: '1987-1990年' },
+                { id: '2man', label: '1900-1911年 (2万分の1)' },
+                { id: '00', label: '1914-1926年' },
+                { id: '01', label: '1931-1940年' },
+                { id: '02', label: '1958-1964年' },
+                { id: '03', label: '1977-1982年' },
                 { id: '04', label: '1998-2001年' }
             ]
         },
-        iga: {
-            label: '伊賀',
+        nagasaki: {
+            label: '長崎',
             periods: [
-                { id: '00', label: '1892年' },
-                { id: '01', label: '1937年' },
+                { id: '2man', label: '1900-1901年 (2万分の1)' },
+                { id: '00', label: '1924-1926年' },
+                { id: '01', label: '1954年' },
+                { id: '02', label: '1970年' },
+                { id: '03', label: '1982-1983年' },
+                { id: '03', label: '1996-2000年' }
+            ]
+        },
+        sasebo: {
+            label: '佐世保',
+            periods: [
+                { id: '2man', label: '1900-1901年 (2万分の1)' },
+                { id: '00', label: '1924年' },
+                { id: '01', label: '1971年' },
+                { id: '02', label: '1985-1987年' },
+                { id: '03', label: '1997-1998年' }
+            ]
+        },
+        kumamoto: {
+            label: '熊本',
+            periods: [
+                { id: '2man', label: '1900-1901年 (2万分の1)' },
+                { id: '00', label: '1926年' },
+                { id: '01', label: '1965-1971年' },
+                { id: '02', label: '1983年' },
+                { id: '03', label: '1998-2000年' }
+            ]
+        },
+        yatsushiro: {
+            label: '八代',
+            periods: [
+                { id: '00', label: '1913年' },
+                { id: '01', label: '1951年' },
                 { id: '02', label: '1968年' },
-                { id: '03', label: '1980-1986年' },
-                { id: '04', label: '1996-2001年' }
+                { id: '03', label: '1983-1986年' },
+                { id: '04', label: '1997-2000年' }
+            ]
+        },
+        oita: {
+            label: '大分',
+            periods: [
+                { id: '00', label: '1914年' },
+                { id: '01', label: '1973年' },
+                { id: '02', label: '1984-1986年' },
+                { id: '03', label: '1997-2001年' }
+            ]
+        },
+        miyazaki: {
+            label: '宮崎',
+            periods: [
+                { id: '00', label: '1902年' },
+                { id: '01', label: '1935年' },
+                { id: '02', label: '1962年' },
+                { id: '03', label: '1979年' },
+                { id: '04', label: '1999-2001年' }
+            ]
+        },
+        miyakonojyou: {
+            label: '都城',
+            periods: [
+                { id: '00', label: '1902年' },
+                { id: '01', label: '1932年' },
+                { id: '02', label: '1966年' },
+                { id: '03', label: '1979-1980年' },
+                { id: '04', label: '1998-2001年' }
+            ]
+        },
+        nobeoka: {
+            label: '延岡',
+            periods: [
+                { id: '00', label: '1901年' },
+                { id: '01', label: '1932-1942年' },
+                { id: '02', label: '1965年' },
+                { id: '03', label: '1978-1978年' },
+                { id: '04', label: '1999-2000年' }
+            ]
+        },
+        kagoshima: {
+            label: '鹿児島',
+            periods: [
+                { id: '5man', label: '1902年 (5万分の1)' },
+                { id: '2man', label: '1902年 (2万分の1)' },
+                { id: '00', label: '1932年' },
+                { id: '01', label: '1966年' },
+                { id: '02', label: '1982-1983年' },
+                { id: '03', label: '1996-2001年' }
+            ]
+        },
+        okinawas: {
+            label: '沖縄本島南部',
+            periods: [
+                { id: '00', label: '1919年' },
+                { id: '01', label: '1973-1975年' },
+                { id: '02', label: '1992-1994年' },
+                { id: '03', label: '2005-2008年' }
             ]
         }
     };
